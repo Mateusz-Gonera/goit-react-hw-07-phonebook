@@ -3,10 +3,13 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { setInitialItems } from 'redux/contacts/contactsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getError, getIsLoading } from 'redux/contacts/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   useEffect(() => {
     const storage = JSON.parse(localStorage.getItem('items'));
@@ -42,6 +45,7 @@ export const App = () => {
       <ContactForm />
 
       <h2>Contacts</h2>
+      {isLoading && !error && <b>Loading...</b>}
       <Filter />
       <ContactList />
     </div>

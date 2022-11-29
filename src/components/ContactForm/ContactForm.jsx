@@ -2,7 +2,7 @@ import styles from './ContactForm.module.css';
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/contactsSlice';
+import { addContact } from 'redux/contacts/operations';
 import { getItems } from 'redux/contacts/selectors';
 
 export const ContactForm = () => {
@@ -19,7 +19,7 @@ export const ContactForm = () => {
     if (nameArray.includes(name)) {
       return alert(`${name} is already in contacts.`);
     }
-    dispatch(addContact(name, number));
+    dispatch(addContact({name, number}));
     form.reset();
   };
 
