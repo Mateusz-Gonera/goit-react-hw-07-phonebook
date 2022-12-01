@@ -1,15 +1,19 @@
 import styles from './Filter.module.css';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'redux/contacts/selectors';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { handleFilter } from 'redux/contacts/contactsSlice';
 
 export const Filter = () => {
-  const filter = useSelector(getFilter);
+  const [filter, setFilter] = useState('');
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(handleFilter(filter));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
   const handleChange = evt => {
-    dispatch(handleFilter(evt.target.value));
+    setFilter(evt.target.value);
   };
 
   return (

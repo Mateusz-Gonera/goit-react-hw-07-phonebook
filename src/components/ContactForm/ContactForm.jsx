@@ -3,12 +3,12 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
-import { getItems } from 'redux/contacts/selectors';
+import { selectItems } from 'redux/contacts/selectors';
 
 export const ContactForm = () => {
   let elementId = nanoid();
   const dispatch = useDispatch();
-  const items = useSelector(getItems);
+  const items = useSelector(selectItems);
 
   const handleSubmit = evt => {
     evt.preventDefault();
