@@ -1,7 +1,7 @@
 import styles from './Contact.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/contactsSlice';
+import { deleteContact } from 'redux/contacts/operations';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export const Contact = ({ contact }) => {
   return (
     <>
       <span className={styles.paragraph}>
-        {contact.name}: {contact.number}
+        {contact.name}: {contact.phone}
       </span>
       <button
         type="button"
