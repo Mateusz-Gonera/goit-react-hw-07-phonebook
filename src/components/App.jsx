@@ -13,8 +13,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchContacts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <div

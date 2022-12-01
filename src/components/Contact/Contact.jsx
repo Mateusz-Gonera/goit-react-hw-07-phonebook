@@ -6,20 +6,14 @@ import { deleteContact } from 'redux/contacts/operations';
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(deleteContact(contact.id));
-  };
+  const handleDelete = () => dispatch(deleteContact(contact.id));
 
   return (
     <>
       <span className={styles.paragraph}>
         {contact.name}: {contact.phone}
       </span>
-      <button
-        type="button"
-        className={styles.btn}
-        onClick={() => handleDelete()}
-      >
+      <button type="button" className={styles.btn} onClick={handleDelete}>
         Delete
       </button>
     </>
