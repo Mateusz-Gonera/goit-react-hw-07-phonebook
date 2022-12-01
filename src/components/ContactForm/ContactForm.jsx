@@ -14,12 +14,12 @@ export const ContactForm = () => {
     evt.preventDefault();
     const form = evt.currentTarget;
     const name = form.elements.name.value;
-    const number = form.elements.number.value;
+    const phone = form.elements.number.value;
     const nameArray = items.map(item => item.name);
     if (nameArray.includes(name)) {
       return alert(`${name} is already in contacts.`);
     }
-    dispatch(addContact({name, number}));
+    dispatch(addContact({ name, phone }));
     form.reset();
   };
 
