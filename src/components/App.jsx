@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { Loader } from './Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -32,9 +33,8 @@ export const App = () => {
       <ContactForm />
 
       <h2>Contacts</h2>
-      {isLoading && !error && <b>Loading...</b>}
       <Filter />
-      <ContactList />
+      {isLoading && !error ? <Loader /> : <ContactList />}
     </div>
   );
 };
