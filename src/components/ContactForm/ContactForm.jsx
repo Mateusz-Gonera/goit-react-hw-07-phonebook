@@ -22,7 +22,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <form className={styles.form} htmlFor="contactForm" onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <label className={styles.label}>
         Name
         <input
