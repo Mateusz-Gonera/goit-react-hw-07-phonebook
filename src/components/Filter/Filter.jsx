@@ -1,19 +1,16 @@
 import styles from './Filter.module.css';
-import { useEffect, useState } from 'react';
+import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
 import { handleFilter } from 'redux/contacts/contactsSlice';
 
 export const Filter = () => {
-  const [filter, setFilter] = useState('');
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(handleFilter(filter));
-  }, [filter, dispatch]);
-
   const handleChange = evt => {
-    setFilter(evt.target.value);
+    dispatch(handleFilter(evt.target.value));
   };
+
+  const debouncedChange = debounce(handleChange, 200);
 
   return (
     <label className={styles.label}>
@@ -22,8 +19,7 @@ export const Filter = () => {
         className={styles.input}
         type="text"
         name="filter"
-        value={filter}
-        onChange={handleChange}
+        onChange={debouncedChange}
       />
     </label>
   );
